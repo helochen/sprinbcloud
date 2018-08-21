@@ -1,7 +1,15 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8081/eureka
+      defaultZone: http://localhost:8081/eureka/
+#zuul:
+  routes:
+    userApi:
+      path: /u/**
+      serverId: user-service
+    eurekaClient:
+      path: /e/**
+      serverId: eureka-client
 spring:
   zipkin:
     base-url: http://localhost:8091/
@@ -13,10 +21,6 @@ spring:
       probability: 1.0
 server:
   port: 8093
-zuul:
-  routes:
-    path: /user/**
-    serverId: user-service
 
 
 
