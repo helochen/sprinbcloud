@@ -1,0 +1,22 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+spring:
+  zipkin:
+    base-url: http://localhost:8091/
+  application:
+    name: gateway-service
+
+  sleuth:
+    sampler:
+      probability: 1.0
+server:
+  port: 8093
+zuul:
+  routes:
+    path: /user/**
+    serverId: user-service
+
+
+

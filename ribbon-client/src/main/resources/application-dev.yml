@@ -1,0 +1,15 @@
+stores:
+  ribbon:
+    listOfServers: example.com,google.com
+ribbon:
+  eureka:
+    enabled: false
+server:
+  port: 8085
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+spring:
+  application:
+    name: ribbon-client
