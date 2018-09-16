@@ -1,8 +1,7 @@
 package com.example.userservice;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * class UserController
@@ -17,7 +16,41 @@ public class UserController {
 
 
 	@GetMapping("/hi")
+	@ResponseBody
 	public String hi() {
 		return "hi, im user-service";
+	}
+
+
+	@GetMapping("/u")
+	@ResponseBody
+	public User getuser() {
+		User user = new User();
+
+		user.setId("aaa");
+		user.setName("post");
+		user.setValue(5);
+
+		return user;
+	}
+
+
+	@GetMapping("/t")
+	@ResponseBody
+	public User getP(@RequestParam(name = "name", required = true) String name) {
+		User user = new User();
+
+		user.setId(name);
+		user.setName(name);
+		user.setValue(5);
+
+		return user;
+	}
+
+
+	@PostMapping("/post")
+	@ResponseBody
+	public String testPost(@RequestBody(required = true) User user) {
+		return JSONObject.toJSONString(user);
 	}
 }

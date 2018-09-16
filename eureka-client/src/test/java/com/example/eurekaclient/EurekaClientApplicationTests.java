@@ -13,4 +13,6 @@ public class EurekaClientApplicationTests {
 	public void contextLoads() {
 	}
 
+
+
 }
